@@ -604,7 +604,15 @@ export default {
         },
         getObjectValue: function(object, path, defaultValue) {
             defaultValue = (typeof defaultValue == 'undefined') ? null : defaultValue
-
+            // fix: when object is not a object
+            // eg: a JSON string
+            if(typeof object === 'string') {
+                try{
+                    object = JSON.parse(object)
+                } catch (e) {
+                    console.error(new Error(e))
+                }
+            }
             var obj = object
             if (path.trim() != '') {
                 var keys = path.split('.')
