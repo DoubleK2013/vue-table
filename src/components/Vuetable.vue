@@ -239,9 +239,10 @@ export default {
         queryParams: {
             type: Object,
             default: function() {
+                // change page to current_page which is more semantic
                 return {
                     sort: 'sort',
-                    page: 'page',
+                    page: 'current_page',
                     perPage: 'per_page'
                 }
             }
